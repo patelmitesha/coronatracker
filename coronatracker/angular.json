@@ -5,11 +5,7 @@
   "projects": {
     "coronatracker": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "sass"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -29,7 +25,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.sass"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -94,7 +90,7 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.sass"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -129,6 +125,6 @@
   },
   "defaultProject": "coronatracker",
   "cli": {
-    "analytics": "00ddae27-c575-46da-9a49-eaf783a71886"
+    "analytics": "1e84aa82-73c0-4173-bd5d-469602ec2151"
   }
 }
