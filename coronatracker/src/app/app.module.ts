@@ -15,6 +15,7 @@ import { HttpClientModule  } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LocationService } from  '../service/location.service';
 import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatSnackBarModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,

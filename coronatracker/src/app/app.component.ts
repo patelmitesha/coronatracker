@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from  '../service/location.service';
 import { FormBuilder, FormGroup, Validators, } from '@angular/forms';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -12,8 +13,12 @@ export class AppComponent implements OnInit {
  
   geolocationPosition : any;
   locationForm: FormGroup;
+  infectedLocationPointCounts: number;
+  infectedLocationPoints: any;
 
-  constructor( private locationService: LocationService, private formBuilder: FormBuilder){}
+  constructor( private locationService: LocationService, 
+    private formBuilder: FormBuilder,
+    public snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     if (window.navigator && window.navigator.geolocation) {
@@ -43,13 +48,24 @@ export class AppComponent implements OnInit {
 
   
   scanAreaForInfection(){
-    
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = 'bottom';
+    config.horizontalPosition = 'center';
+    config.duration = 10000;
 
     console.log(this.geolocationPosition.coords.latitude, this.geolocationPosition.coords.longitude);
     this.locationService.scanareaforinfection(this.geolocationPosition.coords.latitude, this.geolocationPosition.coords.longitude).then((res)=>{
-      console.log("Success : "+ res);
+      this.infectedLocationPoints = res;
+      console.log("Location point count : "+ this.infectedLocationPoints.length);
+      if(this.infectedLocationPoints.length>0)
+        this.snackBar.open('Prone to Infection. This location is not safe.',undefined,config);
+      else
+        this.snackBar.open('Not prone to Infection',undefined,config);
+            
+      //infectionPointCounts
     },(err) => { 
       console.log("Error" + err);
+      this.snackBar.open('Error Occured',undefined,config);
     });
   }
   title = 'coronatracker';

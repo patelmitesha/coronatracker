@@ -16,7 +16,7 @@ export class LocationService {
       
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8080/scanareaforinfection',
+      this.http.post('https://coronatrackerapi.appspot.com/scanareaforinfection',
       {
           "lat": lat,
           "lon": lon
